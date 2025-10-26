@@ -1,6 +1,5 @@
 import React from "react";
 import Card1 from "./components/ui/Card1";
-import User from "./components/ui/User";
 
 const App = () => {
   const arr1 = [
@@ -108,7 +107,20 @@ const App = () => {
   console.log(arr1);
   return (
     <>
-      <div className="parent flex  ">
+      <div className="overflow-hidden parent flex flex-wrap justify-between  ">
+        {arr1.map((e) => {
+          return (
+            <Card1
+              company={e.companyName}
+              post={e.post}
+              location={e.location}
+              tag1={e.tag1}
+              tag2={e.tag2}
+              brandlogo={e.brandLogo}
+              pay={e.pay}
+            />
+          );
+        })}
         {/* <Card1 />
         <Card1 />
         <Card1 /> */}
