@@ -1,10 +1,10 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-const RightCardContent = () => {
+const RightCardContent = (props) => {
   return (
     <div className="absolute top-0 left-0 h-full w-full p-3 flex flex-col justify-between">
       <h2 className="bg-white rounded-[100%] text-center text-2xl font-bold h-8 w-7">
-        1
+        {props.id}
       </h2>
       <div className="mt-52">
         <p className="text-lg text-white leading-relaxed ">
@@ -14,7 +14,7 @@ const RightCardContent = () => {
       </div>
       <div className="flex justify-between">
         <button className="bg-blue-500 rounded-full px-6 py-2 font-medium ">
-          Satisfied
+          {props.tag}
         </button>
         <button className="bg-blue-500 rounded-full px-2 py-2 font-medium ">
           <ArrowRight size={25} className="-my-1.5" />

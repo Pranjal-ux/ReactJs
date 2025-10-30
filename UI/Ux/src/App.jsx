@@ -25,7 +25,7 @@ const App = () => {
       {/* <Navbar />
       <Page1Content /> */}
 
-      <Page1 />
+      <Page1 user = {user} />
     </div>
   );
 };
