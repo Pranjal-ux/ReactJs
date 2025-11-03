@@ -13,10 +13,13 @@ const RightCardContent = (props) => {
         </p>
       </div>
       <div className="flex justify-between">
-        <button className="bg-blue-500 rounded-full px-6 py-2 font-medium ">
+        <button
+          style={{ backgroundColor: props.color }}
+          className="   rounded-full px-6 py-2 font-medium "
+        >
           {props.tag}
         </button>
-        <button className="bg-blue-500 rounded-full px-2 py-2 font-medium ">
+        <button className=" bg-blue-500  rounded-full px-2 py-2 font-medium ">
           <ArrowRight size={25} className="-my-1.5" />
         </button>
       </div>
