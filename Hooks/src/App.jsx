@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const [num, setNum] = useState(0);
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="relative flex justify-center items-center flex-row bg-black min-h-screen">
+      <div className="absolute top-80  ">
+        <h1 className="text-6xl font-bold text-center text-white">{num}</h1>
 
-export default App
+        <div className="flex justify-center space-x-4 mt-4">
+          <button
+            onClick={() => {
+              setNum(num + 1);
+            }}
+            className="h-[50px] w-[200px] rounded-lg text-center bg-slate-600 shadow-lg shadow-teal-700"
+          >
+            Increase!!
+          </button>
+          <button
+            onClick={() => {
+              setNum(num - 1);
+            }}
+            className="h-[50px] w-[200px] rounded-lg text-center bg-slate-600 shadow-lg shadow-teal-700"
+          >
+            Decrease!!
+          </button>
+          <button
+            onClick={() => {
+              setNum(num + 5);
+            }}
+            className="h-[50px] w-[200px] rounded-lg text-center bg-slate-600 shadow-lg shadow-teal-700"
+          >
+            Jump by 5!
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
