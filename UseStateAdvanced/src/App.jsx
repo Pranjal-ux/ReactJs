@@ -2,8 +2,15 @@ import React, { useState } from "react";
 
 const App = () => {
   const [num, setNum] = useState(0);
+
+  // const btnClicked = () => {
+  //   setNum((prev) => ({ ...prev, age: 50 }));
+  // };
+
+  //batch update
   const btnClicked = () => {
-    setNum(10);
+    setNum((prev) => prev + 1);
+    setNum((prev) => prev + 1);
   };
   return (
     <div>
