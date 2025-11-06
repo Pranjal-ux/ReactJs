@@ -2,7 +2,7 @@ import React from "react";
 
 const App = () => {
   const submitHandler  = (e)=>{
-    e.preventDefault();
+    e.preventDefault();//FOR TACKELING FORM DEFAULT FEATURE
     console.log("Form submitted")
   }
   return (
