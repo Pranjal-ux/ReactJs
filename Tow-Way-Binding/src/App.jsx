@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
+  const [title, setTitle] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    console.log("Form submitted  by ", title);
+    setTitle('')
   };
   return (
     <div>
@@ -14,7 +16,14 @@ const App = () => {
         className=""
         action=""
       >
-        <input type="text" placeholder="Enter your name " />
+        <input
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+          value={title}
+          type="text"
+          placeholder="Enter your name "
+        />
 
         <button>Submit</button>
       </form>
