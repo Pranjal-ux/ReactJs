@@ -3,15 +3,24 @@ import React, { useState } from "react";
 const App = () => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
+  const [task, setTask] = useState([]);
+
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(title);
-    console.log(details);
+    const copyTask = [...task];
+    copyTask.push({ title, details });
+    setTask(copyTask);
+    console.log(copyTask);
     setTitle("");
     setDetails("");
   };
+  const delteNode = (idx) => {
+    const copyTask = [...task];
+    copyTask.splice(idx, 1);
+    setTask(copyTask);
+  };
   return (
-    <div className=" bg-[#1a1c1d] lg:flex overflow-hidden h-screen">
+    <div className=" bg-[#1a1c1d] lg:flex overflow-auto h-screen">
       <form
         onSubmit={submitHandler}
         className="flex gap-3 lg:w-1/2 items-start flex-col p-6  "
@@ -38,7 +47,7 @@ const App = () => {
           placeholder="Writing your Details"
           type="text"
         />
-        <button className="bg-white w-full px-5 py-7 rounded outline-none text-black font-medium ">
+        <button className="bg-white w-full px-5 py-7 rounded outline-none text-black font-medium lg:cursor-pointer active:scale-95">
           Add Note
         </button>
       </form>
@@ -46,10 +55,32 @@ const App = () => {
         <h1 className="text-4xl text-white underline uppercase font-mono lg:cursor-pointer">
           Recent notes!
         </h1>
-        <div className="flex flex-wrap mt-5 gap-3 h-full overflow-auto ">
-          <div className=" h-50 w-40 border rounded-xl bg-white  "></div>
-          <div className="h-50 w-40 border rounded-xl bg-white  "></div>
-          <div className="h-50 w-40 border rounded-xl bg-white"></div>
+        <div className="flex justify-start items-start flex-wrap mt-5 gap-4 h-[90%] overflow-auto  ">
+          {task.map((e, idx) => {
+            return (
+              <div
+                key={idx}
+                className="flex justify-between flex-col items-start flex-wrap relative h-60 w-50 border bg-cover rounded-xl text-neutral-00 bg-[url('https://imgs.search.brave.com/cGPlcnZxd9GhY3rzbFQ8l3mNo0iVjrIIO--xi8zEPQA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS12ZWN0/b3IvaWxsdXN0cmF0/aW9uLXRlbXBsYXRl/LWRhaWx5LXBsYW5u/ZXItcGxhbm5pbmct/bGlzdC13b3JrLXBy/b2R1Y3Rpdml0eV85/NjQ2ODQtNzYwLmpw/Zz9zZW10PWFpc19o/eWJyaWQmdz03NDAm/cT04MA')] pt-4 pb-4 p-3"
+              >
+                <div className=" whitespace-normal">
+                  <h3 className=" text-3xl underline uppercase leading-tight font-bold mb-2  ">
+                    {e.title}
+                  </h3>
+                  <p className="text-xl leading-tight font-mono overflow-auto wrap-break-word whitespace-normal">
+                    {e.details}
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    delteNode(idx);
+                  }}
+                  className=" tracking-tighter font-xl cursor-pointer font-semibold leading-tight px-10 py-1 bg-red-500 right-0  w-full bg-red border-2 rounded"
+                >
+                  Delete
+                </button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
