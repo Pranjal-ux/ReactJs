@@ -20,7 +20,7 @@ const App = () => {
     setTask(copyTask);
   };
   return (
-    <div className=" bg-[#1a1c1d] lg:flex overflow-auto h-screen">
+    <div className=" bg-[url('https://i.pinimg.com/736x/12/3c/fe/123cfe40019569fe437e3abb0d6974f6.jpg')] lg:flex overflow-auto h-screen">
       <form
         onSubmit={submitHandler}
         className="flex gap-3 lg:w-1/2 items-start flex-col p-6  "
