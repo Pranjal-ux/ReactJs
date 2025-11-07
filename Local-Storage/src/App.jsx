@@ -20,5 +20,4 @@ const App = () => {
   console.log(user1);
   return <div>App</div>;
 };
-
 export default App;
