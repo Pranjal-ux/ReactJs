@@ -13,7 +13,11 @@ const App = () => {
   useEffect(() => {
     getData();
   }, [index]);
-  let printUserData = "No Data is found ";
+  let printUserData = (
+    <h3 className="text-gray-400 text-xs absolute top-1/2 left-1/2 translate-1/2">
+      Loading..
+    </h3>
+  );
   if (userData.length > 0) {
     printUserData = userData.map((e, idx) => {
       return (
@@ -36,9 +40,8 @@ const App = () => {
 
   return (
     <div className="h-screen bg-black overflow-auto text-whites ">
-      <h1 className="bg-red fixed text-5xl">{index}</h1>
       <div className="text-white flex flex-wrap  gap-12  ">{printUserData}</div>
-      <div className="flex justify-center items-center gap-3 mb-3 ">
+      <div className="flex  justify-center items-center gap-4 mb-3 fixed bottom-1 left-1/2 -mx-11   ">
         <button
           onClick={() => {
             if (index > 1) setIndex(index - 1);
