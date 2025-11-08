@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
+import React, { useState } from "react";
+import axios from "axios";
+const App = () => {
+  const [userData, setUserData] = useState([]);
+  const getData = async () => {
+    const response = await axios.get(
+      "https://picsum.photos/v2/list?page=3&limit=32"
+    );
+    setUserData(response.data);
+    console.log("Data mil gaya");
+  };
+  let printUserData = "No Data is found ";
+  if (userData.length > 0) {
+    printUserData = userData.map((e, idx) => {
+      return (
+        <div key={idx}>
+          <div className="h-40 w-44 rounded-xl overflow-hidden ">
+            <img
+              className="h-full w-full object-cover  "
+              src={e.download_url}
+              alt="image not found!!"
+            />
+          </div>
+          <h2 className="font-bold text-xl text-white mt-2">{e.author}</h2>
+        </div>
+      );
+    });
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="h-screen bg-black overflow-auto text-whites ">
+      <button
+        onClick={getData}
+        className="bg-teal-800 px-10 py-5 rounded m-3 w-[200px] text-white"
+      >
+        Get data
+      </button>
+      <div className="text-white flex flex-wrap  gap-12  ">{printUserData}</div>
+    </div>
+  );
+};
 
-export default App
+export default App;
